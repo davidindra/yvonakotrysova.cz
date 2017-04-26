@@ -9,7 +9,7 @@ function init(ajax) {
     window.history.pushState('', '', window.location.pathname);
 
     // custom scripts for pages
-    console.log(_page + ':' + _pageAction); // TODO _page & _pageAction
+    console.log(_page + ':' + _pageAction);
     if (pages[_page]) // function is available
         pages[_page](ajax); // call it
 

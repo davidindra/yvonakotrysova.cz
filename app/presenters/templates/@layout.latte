@@ -5,24 +5,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Sandbox</title>
+    <title n:snippet="title">YvonaKotrysová.cz{ifset #title} | {include title|striptags}{/ifset}</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{$basePath}/css/style.css">
-	{block head}{/block}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- , maximum-scale=1.0, user-scalable=0 -->
+
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'>
+    <meta name="theme-color" content="#000000">
+
+    <meta name="description" content="YvonaKotrysová.cz Photography - profesionální focení při všech příležitostech">
+    <meta name="keywords" content="Yvona Kotrysová,fotografování,focení">
+
+    <meta property="og:title" content="YvonaKotrysová.cz">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yvonakotrysova.cz">
+    <meta property="og:description" content="YvonaKotrysová.cz Photography">
+    <!--<meta property="og:image" content="">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="650">-->
+
+    {block head}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&amp;subset=latin-ext"
+              rel="stylesheet">
+
+        <link type="text/css" rel="stylesheet" href="/css/dist/main.min.css">
+    {/block}
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-	{include content}
+<div id="container">
+    <nav>
+        <a href="/">
+            <img id="logo" src="/img/logo.png" alt="Logo">
+        </a>
+        <ul id="menu">
+            <li class="active"><a href="#">Úvod</a>
+            <li><a href="#">O mně</a>
+            <li><a href="#">Galerie</a>
+            <li><a href="#">Ceník</a>
+            <li><a href="#">Kontakt</a>
+        </ul>
+    </nav>
 
-	{block scripts}
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
-	{/block}
+    {snippet content}
+        <main id="{$presenter->name|lower}{if $presenter->action != 'default'}-{$presenter->action}{/if}">
+            {include content}
+        </main>
+    {/snippet}
+</div>
+
+
+{block scripts}
+
+{snippet pageNameJS}
+    <script type="text/javascript">
+        var _page = {$presenter->name};
+        var _pageAction = {$presenter->action};
+    </script>
+{/snippet}
+
+{snippet flashes}
+    <script type="text/javascript">
+        var flashes = [];
+        {foreach $flashes as $flash}
+        flashes.push({$flash->message});
+        {/foreach}
+    </script>
+{/snippet}
+
+    <script type="text/javascript" src="/js/ext/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/js/ext/nette.ajax.js"></script>
+    <script type="text/javascript" src="/js/ext/spinner.ajax.js"></script>
+    <script type="text/javascript" src="/js/ext/history.ajax.js"></script>
+
+    <script type="text/javascript" src="/js/dist/main.min.js"></script>
+
+{/block}
 </body>
 </html>
