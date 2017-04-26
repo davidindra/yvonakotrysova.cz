@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 'Deploying...'
-cd /var/www/cmgbufet.cz
+cd /var/www/yvonakotrysova.cz
 
 rm -r temp/cache/*
 
