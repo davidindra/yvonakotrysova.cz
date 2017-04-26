@@ -11,5 +11,11 @@ use App\Model;
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
-
+    public function beforeRender()
+    {
+        foreach(['title', 'nav', 'content', 'pageNameJS', 'flashes'] as $snippet){
+            $this->redrawControl($snippet);
+        }
+        parent::beforeRender();
+    }
 }

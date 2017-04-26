@@ -36,16 +36,16 @@
 <body>
 
 <div id="container">
-    <nav>
-        <a href="/">
+    <nav n:snippet="nav">
+        <a class="ajax" n:href="Homepage:">
             <img id="logo" src="/img/logo.png" alt="Logo">
         </a>
         <ul id="menu">
-            <li class="active"><a href="#">Úvod</a>
-            <li><a href="#">O mně</a>
-            <li><a href="#">Galerie</a>
-            <li><a href="#">Ceník</a>
-            <li><a href="#">Kontakt</a>
+            <li n:class="$presenter->name == 'Homepage' ? active"><a class="ajax" n:href="Homepage:">Úvod</a>
+            <li n:class="$presenter->name == 'About' ? active"><a class="ajax" n:href="About:">O mně</a>
+            <li n:class="$presenter->name == 'Gallery' ? active"><a class="ajax" n:href="Gallery:">Galerie</a>
+            <li n:class="$presenter->name == 'Pricelist' ? active"><a class="ajax" n:href="Pricelist:">Ceník</a>
+            <li n:class="$presenter->name == 'Contact' ? active"><a class="ajax" n:href="Contact:">Kontakt</a>
         </ul>
     </nav>
 
