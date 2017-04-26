@@ -1,0 +1,21 @@
+{
+  "name": "yvonakotrysova.cz",
+  "description": "YvonaKotrysova.cz Photography website",
+  "main": "",
+  "authors": [
+    "David Indra"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/davidindra/yvonakotrysova.cz",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "nette.ajax.js": "^2.3.0"
+  }
+}

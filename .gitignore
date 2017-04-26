@@ -1,8 +1,24 @@
-log/*
-temp/*
-vendor/*
+# IDE
+.idea/
+
+# basic
 !.gitignore
 !.htaccess
+
+# Nette
+log/*
+temp/*
+
 app/config/config.local.neon
 
-.idea/
+# dependencies
+vendor/
+bower_components/
+node_modules/
+
+# built & external files
+/www/js/dist/*
+/www/css/dist/*
+
+/www/js/ext/*
+/www/css/ext/*

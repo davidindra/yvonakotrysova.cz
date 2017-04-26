@@ -1,0 +1,26 @@
+{
+  "name": "yvonakotrysova.cz",
+  "version": "1.0.0",
+  "description": "YvonaKotrysova.cz Photography website",
+  "homepage": "https://github.com/davidindra/yvonakotrysova.cz#readme",
+  "author": "David Indra",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidindra/yvonakotrysova.cz.git"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others \"php -S 0.0.0.0:3000 -t www/\" \"grunt watch\""
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "concurrently": "^3.4.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-import-js": "^0.1.4",
+    "grunt-sass": "^2.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}
