@@ -4,6 +4,7 @@ namespace App\Presenters;
 
 use Nette;
 use App\Model;
+use App\Model\Repository\TextObjects;
 
 
 /**
@@ -11,6 +12,12 @@ use App\Model;
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+    /**
+     * @inject
+     * @var TextObjects
+     */
+    public $textObjects;
+
     public function beforeRender()
     {
         foreach(['title', 'nav', 'content', 'pageNameJS', 'flashes'] as $snippet){

@@ -28,7 +28,8 @@
 		"tracy/tracy": "^2.4",
 		"dg/adminer-custom": "^1.6",
 		"vojtech-dobes/nette-ajax-history": "^2.0",
-		"kdyby/doctrine": "v3.1.2"
+		"kdyby/doctrine": "v3.1.2",
+		"erusev/parsedown": "1.6.2"
 	},
 	"require-dev": {
 
