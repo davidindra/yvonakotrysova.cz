@@ -17,8 +17,8 @@ class AdminPresenter extends BasePresenter
 		$form = new Form();
 		$form->elementPrototype->setAttribute('class', 'ajax');
 
-		$form->addText('username', 'Uživatelské jméno:');
-		$form->addPassword('password', 'Heslo:');
+		$form->addText('username', 'Uživatelské jméno:', 18);
+		$form->addPassword('password', 'Heslo:', 18);
 
 		$form->addSubmit('send', 'Přihlásit se');
 
@@ -27,7 +27,7 @@ class AdminPresenter extends BasePresenter
 				$this->user->login($values['username'], $values['password']);
 				$this->redirect('Homepage:');
 			}catch(Nette\Security\AuthenticationException $e){
-				$this->flashMessage('Špatné jméno nebo heslo, zkuste to znouv.');
+				$this->flashMessage($e->getMessage());
 				$this->redirect('Admin:login');
 			}
 		};

@@ -90,6 +90,7 @@ module.exports = function (grunt) {
                             'bower_components/jquery/dist/jquery.min.map',
                             'bower_components/nette.ajax.js/nette.ajax.js',
                             'bower_components/nette.ajax.js/extensions/spinner.ajax.js',
+                            'bower_components/nette.ajax.js/extensions/fidRemove.ajax.js',
                             'vendor/vojtech-dobes/nette-ajax-history/client-side/history.ajax.js'
                         ],
                         dest: 'www/js/ext'
