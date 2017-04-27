@@ -20,9 +20,6 @@ services:
     - App\Model\Repository\TextObjects
 
     - App\Model\UserManager
-    - App\Forms\FormFactory
-    - App\Forms\SignInFormFactory
-    - App\Forms\SignUpFormFactory
     router: App\RouterFactory::createRouter
 
 extensions:
@@ -30,6 +27,7 @@ extensions:
     events: Kdyby\Events\DI\EventsExtension
     annotations: Kdyby\Annotations\DI\AnnotationsExtension
     doctrine: Kdyby\Doctrine\DI\OrmExtension
+    ajaxHistory: VojtechDobes\NetteAjax\HistoryExtension
 
 doctrine:
     metadata:

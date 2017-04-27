@@ -6,7 +6,7 @@ function init(ajax) {
     if (!ajax) $.nette.init(); // Nette.ajax.js
 
     // remove GET parameters
-    window.history.pushState('', '', window.location.pathname);
+    // window.history.pushState('', '', window.location.pathname); // not removing, because it breaks history.ajax.js
 
     // custom scripts for pages
     console.log(_page + ':' + _pageAction);
@@ -16,7 +16,7 @@ function init(ajax) {
 
     // flashes
     flashes.forEach(function (flash) {
-        // TODO flashes showing
+        alert(flash);
     });
 }
 

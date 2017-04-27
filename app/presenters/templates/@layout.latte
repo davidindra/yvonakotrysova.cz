@@ -46,6 +46,7 @@
             <li n:class="$presenter->name == 'Gallery' ? active"><a class="ajax" n:href="Gallery:">Galerie</a>
             <li n:class="$presenter->name == 'Pricelist' ? active"><a class="ajax" n:href="Pricelist:">Ceník</a>
             <li n:class="$presenter->name == 'Contact' ? active"><a class="ajax" n:href="Contact:">Kontakt</a>
+            <li n:if="$user->isLoggedIn()" n:class="$presenter->name == 'Admin' ? active"><a class="ajax" n:href="Admin:logout">Odhlásit se</a></li>
         </ul>
     </nav>
 

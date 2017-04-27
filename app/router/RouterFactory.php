@@ -25,13 +25,15 @@ class RouterFactory
 					'omne' => 'About',
 					'galerie' => 'Gallery',
 					'cenik' => 'Pricelist',
-					'kontakt' => 'Contact'
+					'kontakt' => 'Contact',
+					'administrace' => 'Admin'
 				],
 			],
 			'action' => [
 				Route::VALUE => 'default',
 				Route::FILTER_TABLE => [
-
+					'prihlaseni' => 'login',
+					'odhlaseni' => 'logout'
 				]
 			]
 		]);

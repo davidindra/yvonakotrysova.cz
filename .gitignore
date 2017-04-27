@@ -10,6 +10,7 @@ log/*
 temp/*
 
 app/config/config.local.neon
+app/config/secrets.json
 
 # dependencies
 vendor/
