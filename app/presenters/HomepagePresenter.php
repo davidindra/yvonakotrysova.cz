@@ -10,7 +10,7 @@ class HomepagePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		$this->template->quote = $this->textObjects->getPrintableContentById(1);
+
 	}
 
 }

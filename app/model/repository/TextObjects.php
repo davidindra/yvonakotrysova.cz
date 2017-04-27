@@ -36,26 +36,6 @@ class TextObjects extends Nette\Object
         return $this->textObjects->findOneBy(['id' => $id]);
     }
 
-    /**
-     * Gets object's content and returns its content or (when non existent) "[ID]"
-     * @param int $id
-     * @return string
-     */
-    public function getPrintableContentById($id, $markdown = false){
-        /** @var TextObject */
-        $textObject = $this->textObjects->findOneBy(['id' => $id]);
-        if(is_null($textObject)) {
-            return '[' . $id . ']';
-        }else {
-            if($markdown){
-                $parsedown = new \Parsedown();
-                return $parsedown->parse($textObject->getContent());
-            }else{
-                return $textObject->getContent();
-            }
-        }
-    }
-
     public function __destruct()
     {
         $this->em->flush();

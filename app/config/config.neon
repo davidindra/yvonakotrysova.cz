@@ -19,6 +19,8 @@ services:
     - App\Model\Entity\TextObject
     - App\Model\Repository\TextObjects
 
+    - App\Control\TextObjectControl
+
     - App\Model\UserManager
     router: App\RouterFactory::createRouter
 
