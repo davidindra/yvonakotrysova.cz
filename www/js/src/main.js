@@ -4,9 +4,9 @@ var pages = [];
 
 function init(ajax) {
     if (!ajax){
-        $(function(){
+        //$(function(){
             $.nette.init();
-        });
+        //});
     } // Nette.ajax.js
 
     // custom scripts for pages
