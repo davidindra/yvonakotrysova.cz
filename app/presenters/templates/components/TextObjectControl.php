@@ -48,6 +48,8 @@ class TextObjectControl extends UI\Control
 
     public function createComponentEditForm(){
         $form = new Form();
+        $form->elementPrototype->setAttribute('class', 'ajax'); // TODO not working, dunno why
+
         $form->addHidden('id', $this->getParameter('id'));
         $form->addTextArea('content', 'Obsah')
             ->setAttribute('placeholder', 'Obsah textového prvku')

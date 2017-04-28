@@ -15,6 +15,6 @@
     {/if}
 
     <span n:if="!$editing && $user->isLoggedIn()" class="edit">
-        <a n:href="edit! $id">Upravit</a>
+        <a class="ajax" n:href="edit! $id">Upravit</a>
     </span>
 {/if}
