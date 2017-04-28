@@ -3,7 +3,11 @@ var pages = [];
 //@import '_homepage.js';
 
 function init(ajax) {
-    if (!ajax) $.nette.init(); // Nette.ajax.js
+    if (!ajax){
+        $(function(){
+            $.nette.init();
+        });
+    } // Nette.ajax.js
 
     // custom scripts for pages
     console.log(_page + ':' + _pageAction);
