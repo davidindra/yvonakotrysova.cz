@@ -5,6 +5,8 @@ use App\Model\Entity\TextObject;
 use App\Model\Repository\TextObjects;
 use Nette;
 use Nette\Application\UI;
+use Nette\Application\UI\Form;
+use Tracy\Debugger;
 
 class TextObjectControl extends UI\Control
 {
@@ -30,8 +32,11 @@ class TextObjectControl extends UI\Control
 
         $textObject = $this->textObjects->getById($id);
 
+        $template->editing = $this->getParameter('id') ? $this->getParameter('id') : false;
+
         $template->paragraph = $paragraph;
         $template->id = $id;
+
         if($textObject instanceof TextObject){
             $template->content = $textObject->getContent();
         }else{
@@ -39,5 +44,34 @@ class TextObjectControl extends UI\Control
         }
 
         $template->render(__DIR__ . '/TextObjectControl.latte');
+    }
+
+    public function createComponentEditForm(){
+        $form = new Form();
+        $form->addHidden('id', $this->getParameter('id'));
+        $form->addTextArea('content', 'Obsah')
+            ->setAttribute('placeholder', 'Obsah textového prvku')
+            ->setAttribute('autofocus')
+            ->setValue(
+                $this->textObjects->getById(
+                    $this->getParameter('id')
+                ) != null ?
+                    $this->textObjects->getById($this->getParameter('id'))->getContent() : null
+            );
+        $form->addSubmit('send', 'Uložit');
+        $form->onSuccess[] = function (Form $form, $values) {
+            if(!$this->presenter->user->isLoggedIn()){
+                $this->flashMessage('Administrátor není přihlášen, takže nemůže provádět změny.');
+            }else {
+                $this->textObjects->getById($values['id'])->setContent($values['content']);
+                $this->flashMessage('Změněný textový prvek byl uložen.');
+            }
+            $this->redirect('this');
+        };
+        return $form;
+    }
+
+    public function handleEdit($id){
+
     }
 }

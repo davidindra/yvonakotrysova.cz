@@ -1,5 +1,20 @@
 {* todo edit mode *}
 
-{if $paragraph}<p>{/if}
+{if $editing}
+    {form editForm}
+        {input content}
+        {input send}
+    {/form}
+{else}
+    {if $paragraph}
+        <p>
+    {/if}
     {$content|markdown}
-{if $paragraph}</p>{/if}
+    {if $paragraph}
+        </p>
+    {/if}
+
+    <span n:if="!$editing && $user->isLoggedIn()" class="edit">
+        <a n:href="edit! $id">Upravit</a>
+    </span>
+{/if}
