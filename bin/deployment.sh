@@ -5,6 +5,8 @@ cd /var/www/yvonakotrysova.cz
 
 rm -r temp/cache/*
 
+alias php=php7.0
+
 composer install --no-dev --no-interaction 2>&1;
 npm install
 bower install
