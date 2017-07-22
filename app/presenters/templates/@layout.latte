@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title n:snippet="title">{ifset #title}{include title|striptags} | {/ifset}YvonaKotrysová.cz</title>
+    <title n:snippet="title">{if \Tracy\Debugger::detectDebugMode()}DEV - {/if}{ifset #title}{include title|striptags} | {/ifset}YvonaKotrysová.cz</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- , maximum-scale=1.0, user-scalable=0 -->
 
