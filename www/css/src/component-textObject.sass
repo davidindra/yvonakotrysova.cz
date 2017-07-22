@@ -13,10 +13,16 @@ form#frm-textObject-editForm
     border-radius: .3em
     margin-bottom: .5em
 
-span.edit
-  float: right
+div.text-object
 
-  a
-    font-weight: bold
-    &:hover
-      font-weight: normal
+  span.edit
+    float: right
+    margin: 0 0 10px 10px
+
+    a
+      padding: 2px 5px
+      border: 1px dashed $fontdark
+      font-size: $fontdefaultsize
+
+      &:hover
+        border-color: $fontlight

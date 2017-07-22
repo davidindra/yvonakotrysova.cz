@@ -20,21 +20,27 @@ class TextObjectControl extends UI\Control
         $this->textObjects = $textObjects;
     }
 
-    public function render($id, $paragraph = true)
+    public function render($id, $multiparagraph = true)
     {
         $template = $this->template;
 
         $template->addFilter('markdown', function($input) {
-            $md = \Parsedown::instance();
+            $md = \Parsedown::instance()->setBreaksEnabled(true);
             $html = new Nette\Utils\Html();
-            return $html->setHtml($md->line($this->template->getLatte()->invokeFilter('breaklines', [$input])));
+            return $html->setHtml($md->parse($input));
+        });
+
+        $template->addFilter('markdownLine', function($input) {
+            $md = \Parsedown::instance()->setBreaksEnabled(true);
+            $html = new Nette\Utils\Html();
+            return $html->setHtml($md->line($input));
         });
 
         $textObject = $this->textObjects->getById($id);
 
         $template->editing = $this->getParameter('id') ? $this->getParameter('id') : false;
 
-        $template->paragraph = $paragraph;
+        $template->multiparagraph = $multiparagraph;
         $template->id = $id;
 
         if($textObject instanceof TextObject){
