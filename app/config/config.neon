@@ -19,6 +19,11 @@ services:
     - App\Model\Entity\TextObject
     - App\Model\Repository\TextObjects
 
+    - App\Model\Entity\Photo
+
+    - App\Model\Entity\Gallery
+    - App\Model\Repository\Galleries
+
     - App\Control\TextObjectControl
 
     - App\Model\UserManager

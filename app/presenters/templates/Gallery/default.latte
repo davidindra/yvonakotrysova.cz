@@ -1,5 +1,10 @@
 {block title}Galerie{/block}
 {block content}
+<h1>
+    {$gallery->getName()}
+</h1>
+<img n:tag-foreach="$gallery->getPhotos() as $photo" src="{$photo->getSourcePreview()}">
+<!--<img src="//placehold.it/300x225">
 <img src="//placehold.it/300x225">
 <img src="//placehold.it/300x225">
 <img src="//placehold.it/300x225">
@@ -9,6 +14,4 @@
 <img src="//placehold.it/300x225">
 <img src="//placehold.it/300x225">
 <img src="//placehold.it/300x225">
-<img src="//placehold.it/300x225">
-<img src="//placehold.it/300x225">
-<img src="//placehold.it/300x225">
+<img src="//placehold.it/300x225">-->
