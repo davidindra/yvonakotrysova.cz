@@ -25,7 +25,7 @@ class Galleries extends Nette\Object
      * @return Gallery[]
      */
     public function getAll(){
-        return $this->galleries->findBy(null, ['order' => 'ASC']);
+        return $this->galleries->findBy([], ['order' => 'ASC']);
     }
 
     /**

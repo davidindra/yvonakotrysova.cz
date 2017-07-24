@@ -43,7 +43,19 @@
         <ul id="menu">
             <li n:class="$presenter->name == 'Homepage' ? active"><a class="ajax" n:href="Homepage:">Úvod</a>
             <li n:class="$presenter->name == 'About' ? active"><a class="ajax" n:href="About:">O mně</a>
-            <li n:class="$presenter->name == 'Gallery' ? active"><a class="ajax" n:href="Homepage:">Galerie</a>
+            <li n:class="$presenter->name == 'Gallery' ? active">
+                <a class="ajax" href="#">
+                    Galerie
+                </a>
+                <br>
+                <ul n:if="count($galleries) > 0" id="galleries">
+                    <li n:foreach="$galleries as $galleryItem">
+                        <a n:href="Gallery:default $galleryItem->getId()">
+                            &dash; {$galleryItem->getName()}
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li n:class="$presenter->name == 'Pricelist' ? active"><a class="ajax" n:href="Pricelist:">Ceník</a>
             <li n:class="$presenter->name == 'Contact' ? active"><a class="ajax" n:href="Contact:">Kontakt</a>
             <li n:if="$user->isLoggedIn()" n:class="$presenter->name == 'Admin' ? active"><a class="ajax" n:href="Admin:logout">Odhlásit se</a></li>

@@ -29,7 +29,7 @@ div#container
 
 nav
   height: 120px
-  line-height: 120px
+  //line-height: 120px
   margin-bottom: 30px
 
   img#logo
@@ -46,6 +46,39 @@ nav
     color: $fontdark
     list-style-type: none
 
-    li
+    >li
       display: inline-block
+      vertical-align: top
       margin-left: 15px
+
+      &:nth-of-type(3) // hover submenu compensation
+        margin-right: -7px
+
+      >a
+        line-height: 120px
+
+      >ul#galleries
+        opacity: 0
+        transition: opacity .5s ease-out
+        display: inline-block
+        z-index: -1
+        position: absolute
+        width: 80px
+        line-height: 30px
+        overflow: visible
+        margin-top: -50px
+        font-size: 20px
+
+        >li
+          display: block
+          width: 250%
+          margin-left: 0
+          padding: 0 7px
+          background: url("/img/texture.png") repeat
+
+          &:first-of-type
+            padding-top: 3px
+
+      &:hover>ul#galleries
+        opacity: 1
+        z-index: 1

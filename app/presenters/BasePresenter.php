@@ -3,6 +3,7 @@
 namespace App\Presenters;
 
 use App\Control\TextObjectControl;
+use App\Model\Repository\Galleries;
 use Nette;
 use App\Model;
 use App\Model\Repository\TextObjects;
@@ -25,13 +26,22 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
      */
     public $textObjectControl;
 
+    /**
+     * @inject
+     * @var Galleries
+     */
+    public $galleries;
+
     public function beforeRender()
     {
+        $this->template->galleries = $this->galleries->getAll();
+
         $this->addFilters();
 
         foreach(['title', 'nav', 'content', 'pageNameJS', 'flashes'] as $snippet){
             $this->redrawControl($snippet);
         }
+
         parent::beforeRender();
     }
 
