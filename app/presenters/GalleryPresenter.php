@@ -45,12 +45,12 @@ class GalleryPresenter extends BasePresenter
                 $this->error('Musíte být přihlášen/a jako administrátor.');
             }
 
+            $notifyFailed = false;
+            $failedImages = [];
+
             foreach($values['image'] as $file) {
 
                 if ($file->isImage() && $file->isOk()) {
-
-                    $notifyFailed = false;
-                    $failedImages = [];
 
                     try{
 
