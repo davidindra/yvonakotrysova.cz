@@ -50,45 +50,65 @@ class GalleryPresenter extends BasePresenter
 
                 if ($file->isImage() && $file->isOk()) {
 
-                    $extension = strtolower(mb_substr($file->getSanitizedName(), strrpos($file->getSanitizedName(), ".")));
+                    $notifyFailed = false;
+                    $failedImages = [];
 
-                    $unique = uniqid(rand(0, 20), TRUE);
+                    try{
 
-                    $fileName = $unique . $extension;
-                    $pathWww = '/img/gallery/' . $fileName;
-                    $pathApp = __DIR__ . '/../../www' . $pathWww;
+                        $extension = strtolower(mb_substr($file->getSanitizedName(), strrpos($file->getSanitizedName(), ".")));
 
-                    $fileNameThumb = $unique . '.thumb' . $extension;
-                    $pathWwwThumb = '/img/gallery/' . $fileNameThumb;
-                    $pathAppThumb = __DIR__ . '/../../www' . $pathWwwThumb;
+                        $unique = uniqid(rand(0, 20), TRUE);
 
-                    if (!is_dir(pathinfo($pathApp)['dirname'])) mkdir(pathinfo($pathApp)['dirname']);
+                        $fileName = $unique . $extension;
+                        $pathWww = '/img/gallery/' . $fileName;
+                        $pathApp = __DIR__ . '/../../www' . $pathWww;
 
-                    $file->move($pathApp);
+                        $fileNameThumb = $unique . '.thumb' . $extension;
+                        $pathWwwThumb = '/img/gallery/' . $fileNameThumb;
+                        $pathAppThumb = __DIR__ . '/../../www' . $pathWwwThumb;
 
-                    $image = Image::fromFile($pathApp);
-                    if ($image->getWidth() > $image->getHeight()) {
-                        $image->resize(300, NULL);
-                    } else {
-                        $image->resize(NULL, 225);
+                        if (!is_dir(pathinfo($pathApp)['dirname'])) mkdir(pathinfo($pathApp)['dirname']);
+
+                        $file->move($pathApp);
+
+                        $image = Image::fromFile($pathApp);
+                        if ($image->getWidth() > $image->getHeight()) {
+                            $image->resize(300, NULL);
+                        } else {
+                            $image->resize(NULL, 225);
+                        }
+                        $image->sharpen();
+                        $image->save($pathAppThumb);
+
+                        $photo = new Photo();
+                        $photo->setOwningGallery($this->galleries->getById($values['galleryId']));
+                        $photo->setOrder($this->photos->getLastId() + 1);
+                        $photo->setSource($pathWww);
+                        $photo->setSourcePreview($pathWwwThumb);
+
+                        $this->photos->add($photo);
+
+                    }catch(\Exception $e){
+                        $notifyFailed = true;
+                        $failedImages[] = $file->getSanitizedName();
                     }
-                    $image->sharpen();
-                    $image->save($pathAppThumb);
-
-                    $photo = new Photo();
-                    $photo->setOwningGallery($this->galleries->getById($values['galleryId']));
-                    $photo->setOrder($this->photos->getLastId() + 1);
-                    $photo->setSource($pathWww);
-                    $photo->setSourcePreview($pathWwwThumb);
-
-                    $this->photos->add($photo);
-
-                    //$this->redirect('this');
 
                 } else {
                     $this->error('Nahrání fotografie selhalo.', Nette\Http\IResponse::S500_INTERNAL_SERVER_ERROR);
                 }
 
+            }
+
+            if($notifyFailed){
+                if(count($values['image']) == 1)
+                    $this->flashMessage('Nahrání fotografie selhalo.');
+                else
+                    $this->flashMessage('Nahrání následujících fotografií selhalo: ' . implode(', ', $failedImages));
+            }else{
+                if(count($values['image']) == 1)
+                    $this->flashMessage('Fotografie byla úspěšně nahrána.');
+                else
+                    $this->flashMessage('Fotografie byly úspěšně nahrány.');
             }
         };
 
