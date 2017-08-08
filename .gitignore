@@ -23,3 +23,6 @@ node_modules/
 
 /www/js/ext/*
 /www/css/ext/*
+
+# uploaded gallery files
+/www/img/gallery/*

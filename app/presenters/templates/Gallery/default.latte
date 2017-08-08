@@ -3,5 +3,24 @@
 <h1>
     {$gallery->getName()}
 </h1>
-<img n:tag-foreach="$gallery->getPhotos() as $photo" src="{$photo->getSourcePreview()}">
+
 <p n:if="count($gallery->getPhotos()) == 0" class="no-pictures">Tato galerie zatím neobsahuje žádné fotografie.</p>
+
+<div id="images">
+    <img n:tag-foreach="$gallery->getPhotos() as $photo" src="{$photo->getSourcePreview()}">
+    <div id="adder" n:if="$user->isLoggedIn()">
+        <div id="adder-content">
+            <div id="headline">
+                Nahrání nové fotografie
+            </div>
+            {form adderForm}
+                <input n:name="galleryId" value="{$gallery->getId()}">
+                <input n:name="image"><br>
+                <input n:name="send">
+            {/form}
+            <div id="note">
+                Fotografie by měla mít formát <i>.jpg</i> nebo <i>.png</i> a poměr stran <i>4:3</i>.
+            </div>
+        </div>
+    </div>
+</div>

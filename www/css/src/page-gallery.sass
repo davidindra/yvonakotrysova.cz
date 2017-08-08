@@ -1,17 +1,48 @@
 main#gallery
   font-size: 0
 
-  img
-    width: 300px
-    height: 225px
+  div#images
 
-    margin-right: 30px
-    margin-bottom: 30px
+    img, div#adder
+      display: inline-block
+      overflow: hidden
 
-    cursor: pointer
+      width: 300px
+      height: 225px
 
-    &:nth-of-type(3n)
-      margin-right: 0
+      margin-right: 30px
+      margin-bottom: 30px
+
+      cursor: pointer // TODO temporary
+
+      &:nth-child(3n)
+        margin-right: 0
+
+    div#adder
+      font-size: $fontdefaultsize
+      color: $fontlight
+
+      div#adder-content
+        width: calc(300px - 2em - 2px)
+        height: calc(225px - 2em - 2px)
+
+        padding: 1em
+        border: 1px dashed $fontlight
+
+        div#headline
+          font-size: 1.2em
+          font-weight: bold
+
+        div#note
+          font-size: .8em
+
+        input[type^="file"]
+          margin: 1.5em .3em .5em
+
+        input[type^="submit"]
+          margin: .5em .3em 1.5em
+          padding: .3em
+          border-radius: .2em
 
   p.no-pictures
     font-size: $fontdefaultsize

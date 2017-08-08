@@ -28,7 +28,7 @@ class Photo
     protected $sourcePreview;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="`order`", type="integer", nullable=true)
      */
     protected $order;
 
@@ -39,7 +39,7 @@ class Photo
 
     public function __construct()
     {
-        $this->lastUpdate = time();
+        $this->lastUpdate = new \DateTime();
     }
 
     public function getLastUpdate()
@@ -52,6 +52,16 @@ class Photo
         return $this->source;
     }
 
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
+
+    public function setSourcePreview($sourcePreview)
+    {
+        $this->sourcePreview = $sourcePreview;
+    }
+
     public function getSourcePreview()
     {
         return $this->sourcePreview;
@@ -60,5 +70,15 @@ class Photo
     public function setLastUpdate($lastUpdate)
     {
         $this->lastUpdate = $lastUpdate;
+    }
+
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    public function setOwningGallery(Gallery $gallery)
+    {
+        $this->gallery = $gallery;
     }
 }

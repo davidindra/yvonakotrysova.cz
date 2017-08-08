@@ -5,7 +5,6 @@ namespace App\Presenters;
 use App\Control\TextObjectControl;
 use App\Model\Repository\Galleries;
 use Nette;
-use App\Model;
 use App\Model\Repository\TextObjects;
 
 

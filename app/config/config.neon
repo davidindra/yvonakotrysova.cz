@@ -20,6 +20,7 @@ services:
     - App\Model\Repository\TextObjects
 
     - App\Model\Entity\Photo
+    - App\Model\Repository\Photos
 
     - App\Model\Entity\Gallery
     - App\Model\Repository\Galleries
