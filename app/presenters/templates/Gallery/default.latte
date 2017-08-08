@@ -7,7 +7,6 @@
 <p n:if="count($gallery->getPhotos()) == 0" class="no-pictures">Tato galerie zatím neobsahuje žádné fotografie.</p>
 
 <div id="images">
-    <img n:tag-foreach="$gallery->getPhotos() as $photo" src="{$photo->getSourcePreview()}">
     <div id="adder" n:if="$user->isLoggedIn()">
         <div id="adder-content">
             <div id="headline">
@@ -23,4 +22,5 @@
             </div>
         </div>
     </div>
+    <img n:tag-foreach="$gallery->getPhotos() as $photo" src="{$photo->getSourcePreview()}">
 </div>
