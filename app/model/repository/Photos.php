@@ -30,7 +30,10 @@ class Photos extends Nette\Object
     }
 
     public function getLastId(){
-        return $this->photos->findOneBy([], ['order' => 'DESC'])->getId();
+        if($this->photos->countBy([]) > 0)
+            return $this->photos->findOneBy([], ['order' => 'DESC'])->getId();
+        else
+            return 1;
     }
 
     public function __destruct()
