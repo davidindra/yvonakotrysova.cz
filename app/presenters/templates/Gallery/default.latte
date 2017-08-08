@@ -23,6 +23,9 @@
         </div>
     </div>
     <div class="image" n:foreach="$gallery->getPhotos() as $photo">
+        <span class="tools" n:if="$user->isLoggedIn()">
+            <a class="remove ajax" n:href="removePhoto! $photo->getId()" title="Odstranit fotografii"><img src="/img/lightbox/close.png"></a>
+        </span>
         <span class="centerer"></span>
         <a href="{$photo->getSource()}" data-lightbox="gallery">
             <img src="{$photo->getSourcePreview()}">

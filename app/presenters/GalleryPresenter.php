@@ -113,4 +113,17 @@ class GalleryPresenter extends BasePresenter
 
         return $form;
     }
+
+    public function handleRemovePhoto(int $photoId)
+    {
+        if(!$this->user->isLoggedIn()){
+            $this->error('Musíte být přihlášen/a jako administrátor.');
+        }
+
+        $this->photos->removeById($photoId);
+
+        $this->flashMessage('Fotografie byla úspěšně smazána.');
+
+        $this->redirect('this');
+    }
 }

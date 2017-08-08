@@ -29,6 +29,10 @@ class Photos extends Nette\Object
         return $this->photos->findOneBy(['id' => $id]);
     }
 
+    public function removeById($id){
+        $this->em->remove($this->getById($id))->flush();
+    }
+
     public function getLastId(){
         if($this->photos->countBy([]) > 0)
             return $this->photos->findOneBy([], ['order' => 'DESC'])->getId();
