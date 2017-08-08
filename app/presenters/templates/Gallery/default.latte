@@ -23,6 +23,7 @@
         </div>
     </div>
     <div class="image" n:foreach="$gallery->getPhotos() as $photo">
+        <span class="centerer"></span>
         <img src="{$photo->getSourcePreview()}">
     </div>
 </div>

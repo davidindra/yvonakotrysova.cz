@@ -6,6 +6,7 @@ main#gallery
     div.image
       display: inline-block
       overflow: hidden
+      text-align: center
 
       width: 300px
       height: 225px
@@ -16,13 +17,19 @@ main#gallery
       &:nth-child(3n)
         margin-right: 0
 
+      span.centerer
+        display: inline-block
+        height: 100%
+        vertical-align: middle
+
       img
-        display: block
-        margin: 0 auto
+        display: inline-block
+        vertical-align: middle
 
         cursor: pointer
 
     div#adder
+      text-align: left
       font-size: $fontdefaultsize
       color: $fontlight
 
