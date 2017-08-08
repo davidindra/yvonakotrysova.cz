@@ -35,7 +35,6 @@ class GalleryPresenter extends BasePresenter
         $form->addHidden('galleryId');
 
         $form->addMultiUpload('image', 'Fotografie:')
-            ->addRule(Form::MAX_FILE_SIZE, 'Maximální velikost souboru je 20 MB.', 20000 * 1024)
             ->addRule(Form::FILLED, 'Zvolte, prosím, nějaký soubor k přidání.');
 
         $form->addSubmit('send', 'Přidat do fotogalerie');
