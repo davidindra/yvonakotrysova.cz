@@ -23,6 +23,11 @@ node_modules/
 
 /www/js/ext/*
 /www/css/ext/*
+!/www/css/ext/lightbox.css
+!/www/css/ext/lightbox.min.css
 
 # uploaded gallery files
 /www/img/gallery/*
+
+# Lightbox2 icons
+/www/img/lightbox/

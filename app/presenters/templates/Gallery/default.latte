@@ -24,6 +24,8 @@
     </div>
     <div class="image" n:foreach="$gallery->getPhotos() as $photo">
         <span class="centerer"></span>
-        <img src="{$photo->getSourcePreview()}">
+        <a href="{$photo->getSource()}" data-lightbox="gallery">
+            <img src="{$photo->getSourcePreview()}">
+        </a>
     </div>
 </div>

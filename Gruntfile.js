@@ -91,9 +91,29 @@ module.exports = function (grunt) {
                             'bower_components/nette.ajax.js/nette.ajax.js',
                             'bower_components/nette.ajax.js/extensions/spinner.ajax.js',
                             'bower_components/nette.ajax.js/extensions/fidRemove.ajax.js',
+                            'bower_components/lightbox2/dist/js/lightbox.js',
+                            'bower_components/lightbox2/dist/js/lightbox.min.js',
+                            'bower_components/lightbox2/dist/js/lightbox.min.map',
                             'vendor/vojtech-dobes/nette-ajax-history/client-side/history.ajax.js'
                         ],
                         dest: 'www/js/ext'
+                    },
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: [
+                            //'bower_components/lightbox2/dist/css/lightbox.css',
+                            //'bower_components/lightbox2/dist/css/lightbox.min.css'
+                        ],
+                        dest: 'www/css/ext'
+                    },
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: [
+                            'bower_components/lightbox2/dist/images/*'
+                        ],
+                        dest: 'www/img/lightbox'
                     }
                 ],
             },
