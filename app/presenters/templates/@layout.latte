@@ -50,7 +50,7 @@
                 <br>
                 <ul n:if="count($galleries) > 0" id="galleries">
                     <li n:foreach="$galleries as $galleryItem">
-                        <a n:href="Gallery:default $galleryItem->getId()">
+                        <a class="ajax" n:href="Gallery:default $galleryItem->getId()">
                             &dash; {$galleryItem->getName()}
                         </a>
                     </li>
