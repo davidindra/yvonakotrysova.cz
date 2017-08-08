@@ -40,8 +40,12 @@ class Photos extends Nette\Object
             return 1;
     }
 
-    public function __destruct()
-    {
+    public function flush(){
         $this->em->flush();
+    }
+
+    public function __destruct() // seems not triggering
+    {
+        $this->flush();
     }
 }

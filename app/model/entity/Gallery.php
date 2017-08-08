@@ -19,6 +19,7 @@ class Gallery
 
     /**
      * @ORM\OneToMany(targetEntity="Photo", mappedBy="gallery")
+     * @ORM\OrderBy(value={"order" = "ASC"})
      */
     protected $photos;
 

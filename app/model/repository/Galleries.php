@@ -36,6 +36,11 @@ class Galleries extends Nette\Object
         return $this->galleries->findOneBy(['id' => $id]);
     }
 
+    public function reload(){
+        $this->em->clear(Gallery::class);
+        $this->galleries = $this->em->getRepository(Gallery::class);
+    }
+
     public function __destruct()
     {
         $this->em->flush();

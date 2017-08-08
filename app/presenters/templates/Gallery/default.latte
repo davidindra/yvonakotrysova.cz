@@ -24,7 +24,15 @@
     </div>
     <div class="image" n:foreach="$gallery->getPhotos() as $photo">
         <span class="tools" n:if="$user->isLoggedIn()">
-            <a class="remove ajax" n:href="removePhoto! $photo->getId()" title="Odstranit fotografii"><img src="/img/lightbox/close.png"></a>
+            <a n:if="!$iterator->first" class="left ajax" n:href="photoMoveLeft! $photo->getId()" title="Přesunout fotografii vlevo">
+                <img src="/img/lightbox/prev.png">
+            </a>
+            <a n:if="!$iterator->last" class="right ajax" n:href="photoMoveRight! $photo->getId()" title="Přesunout fotografii vpravo">
+                <img src="/img/lightbox/next.png">
+            </a>
+            <a class="remove ajax" n:href="removePhoto! $photo->getId()" title="Odstranit fotografii">
+                <img src="/img/lightbox/close.png">
+            </a>
         </span>
         <span class="centerer"></span>
         <a href="{$photo->getSource()}" data-lightbox="gallery">

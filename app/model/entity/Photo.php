@@ -42,6 +42,11 @@ class Photo
         $this->lastUpdate = new \DateTime();
     }
 
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
     public function getLastUpdate()
     {
         return $this->lastUpdate;
@@ -75,6 +80,11 @@ class Photo
     public function setOrder($order)
     {
         $this->order = $order;
+    }
+
+    public function getOrder()
+    {
+        return $this->order;
     }
 
     public function setOwningGallery(Gallery $gallery)

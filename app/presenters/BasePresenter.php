@@ -10,6 +10,7 @@ use App\Model\Repository\TextObjects;
 
 /**
  * Base presenter for all application presenters.
+ * @property-read \Nette\Bridges\ApplicationLatte\Template|\stdClass $template
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {

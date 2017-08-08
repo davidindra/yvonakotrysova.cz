@@ -19,15 +19,26 @@ main#gallery
 
       span.tools
         position: absolute
-        margin-left: 220px
+        margin-left: calc(300px - 90px - 2px)
         display: inline-block
-        width: 80px
-        height: 20px
+        width: 90px
+        height: 30px
+        background-color: $background
+        border: 1px dashed $fontdark
         text-align: right
 
-        a.remove
+        a
+          margin-left: 5px
+
+          &.left
+            margin-left: 0
+            margin-right: 10px
+
+          &.remove
+            margin-right: 8px
 
           img
+            margin-top: 5px
             width: 20px
             height: 20px
 

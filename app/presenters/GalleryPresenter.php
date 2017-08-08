@@ -126,4 +126,49 @@ class GalleryPresenter extends BasePresenter
 
         $this->redirect('this');
     }
+
+    public function handlePhotoMoveLeft(int $photoId)
+    {
+        if(!$this->user->isLoggedIn()){
+            $this->error('Musíte být přihlášen/a jako administrátor.');
+        }
+
+        $this->swapPhotos($photoId, true);
+
+        $this->redirect('this');
+    }
+
+    public function handlePhotoMoveRight(int $photoId)
+    {
+        if(!$this->user->isLoggedIn()){
+            $this->error('Musíte být přihlášen/a jako administrátor.');
+        }
+
+        $this->swapPhotos($photoId, false);
+    }
+
+    private function swapPhotos(int $photoId, bool $left)
+    {
+        $gallery = $this->photos->getById($photoId)->getGallery();
+
+        $lastPhoto = null;
+        foreach($gallery->getPhotos() as $photo){
+            $swap = $left
+                ? !is_null($lastPhoto) && $photo->getId() == $photoId
+                : !is_null($lastPhoto) && $lastPhoto->getId() == $photoId;
+            if($swap){
+                $order1 = $lastPhoto->getOrder();
+                $order2 = $photo->getOrder();
+
+                $lastPhoto->setOrder($order2);
+                $photo->setOrder($order1);
+
+                $this->photos->flush();
+                $this->galleries->reload();
+
+                break;
+            }
+            $lastPhoto = $photo;
+        }
+    }
 }
