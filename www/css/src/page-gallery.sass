@@ -3,7 +3,7 @@ main#gallery
 
   div#images
 
-    img, div#adder
+    div.image
       display: inline-block
       overflow: hidden
 
@@ -13,10 +13,14 @@ main#gallery
       margin-right: 30px
       margin-bottom: 30px
 
-      cursor: pointer // TODO temporary
-
       &:nth-child(3n)
         margin-right: 0
+
+      img
+        display: block
+        margin: 0 auto
+
+        cursor: pointer
 
     div#adder
       font-size: $fontdefaultsize
