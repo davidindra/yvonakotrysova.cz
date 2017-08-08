@@ -40,9 +40,13 @@ class GalleryPresenter extends BasePresenter
 
         $form->onSuccess[] = function (Form $form, $values) {
 
+            if(!$this->user->isLoggedIn()){
+                $this->error('Musíte být přihlášen/a jako administrátor.');
+            }
+
             $file = $values['image'];
 
-            if ($file->isImage() and $file->isOk()) {
+            if ($file->isImage() && $file->isOk()) {
 
                 $extension = strtolower(mb_substr($file->getSanitizedName(), strrpos($file->getSanitizedName(), ".")));
 
